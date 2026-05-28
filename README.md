@@ -1,3 +1,4 @@
+Men KNN imputer va KNN algorithmlarni ishlashini bir datada qilib ko'rdim pastda bu ishni qilishni ketma ketliginini ko'rsataman 
 # 1. Datasetni yuklaymiz
 df = pd.read_csv('KNNAlgorithmDataset.csv')
 
@@ -15,34 +16,9 @@ imputer = KNNImputer(n_neighbors=5)
 # Eslatma: fit_transform() bu yerda ham o'sha mantiqda ishlaydi
 df_filled = imputer.fit_transform(df)
 
-# Natijani yana DataFrame ko'rinishiga qaytaramiz
-df_final = pd.DataFrame(df_filled, columns=df.columns)
-
-print("Bo'sh joylar qoldimi:", df_final.isnull().sum().sum())
-Nima uchun KNN Imputer yaxshiroq?
-Tasavvur qiling, bizda 2 ta bemor bor:
-
-Bemor A: O'simta maydoni katta, perimetri katta, lekin radiusi yozilmagan (NaN).
-
-Bemor B: O'simta maydoni kichik, perimetri kichik.
-
-Agar biz shunchaki o'rtacha qiymatni qo'ysak, ikkala bemorga ham bir xil o'rtacha radiusni beramiz. Bu xato!
-KNN Imputer esa:
-
-Bemor A ga uning "sheriklari" (o'simtasi katta bo'lganlar) ning radiusini qo'yadi.
-
-Bemor B ga esa kichikroq radius qo'yadi.
-
-Qachon ishlatish kerak?
 Agar ma'lumotlaringizda mantiqiy bog'liqlik kuchli bo'lsa (masalan, bo'y va vazn, radius va maydon).
 
-Agar datasetingiz juda katta bo'lmasa (chunki KNN har bir bo'sh katak uchun masofa hisoblagani sababli biroz sekin ishlashi mumkin).
-
-Navbatdagi qadam: Endi korrelyatsiya orqali "keraksiz" ustunlarni (bir-birini takrorlovchi xususiyatlarni) tozalashni ko'ramizmi?
-
-endi korrelyatsiya mi
-
-Ha, aynan! Ma'lumotlarni tozalab (NaN qiymatlarni to'ldirib) bo'lgach, navbatdagi professional qadam — Korrelyatsiya tahlili.
+Agar dataset juda katta bo'lmasa (chunki KNN har bir bo'sh katak uchun masofa hisoblagani sababli biroz sekin ishlashi mumkin).
 
 Korrelyatsiya nima uchun kerak?
 Korrelyatsiya — bu ikki o'zgaruvchi orasidagi bog'liqlik darajasi. U −1 dan +1 gacha bo'lgan son bilan o'lchanadi:
@@ -54,12 +30,10 @@ Korrelyatsiya — bu ikki o'zgaruvchi orasidagi bog'liqlik darajasi. U −1 dan 
 -1 ga yaqin bo'lsa: Teskari bog'liqlik (biri ortsa, ikkinchisi kamayadi).
 
 Nima uchun bu KNN uchun muhim?
-Agar sizda radius_mean, perimeter_mean va area_mean degan ustunlar bo'lsa, bular aslida bir-biri bilan deyarli 100% bog'liq (chunki radius kattalashsa, maydon ham, perimetr ham albatta kattalashadi). Modelga bunday bir-birini takrorlovchi ustunlarni berish "ortiqcha yuk" hisoblanadi va u modelni chalg'itib, aniqlikni pasaytirishi mumkin.
-Источник: Shutterstock
-Открыть
+Agar datada radius_mean, perimeter_mean va area_mean degan ustunlar bo'lsa, bular aslida bir-biri bilan deyarli 100% bog'liq (chunki radius kattalashsa, maydon ham, perimetr ham albatta kattalashadi). Modelga bunday bir-birini takrorlovchi ustunlarni berish "ortiqcha yuk" hisoblanadi va u modelni chalg'itib, aniqlikni pasaytirishi mumkin.
 
 Amaliyot: Korrelyatsiyani aniqlash va keraksizlarni o'chirish
-Keling, yuklagan datasetingiz ustida buni qanday qilishni ko'ramiz:
+Keling, yuklagan dataset ustida buni qanday qilishni ko'ramiz:
 
 Python
 import seaborn as sns
