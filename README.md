@@ -33,7 +33,6 @@ Nima uchun bu KNN uchun muhim?
 Agar datada radius_mean, perimeter_mean va area_mean degan ustunlar bo'lsa, bular aslida bir-biri bilan deyarli 100% bog'liq (chunki radius kattalashsa, maydon ham, perimetr ham albatta kattalashadi). Modelga bunday bir-birini takrorlovchi ustunlarni berish "ortiqcha yuk" hisoblanadi va u modelni chalg'itib, aniqlikni pasaytirishi mumkin.
 
 Amaliyot: Korrelyatsiyani aniqlash va keraksizlarni o'chirish
-Keling, yuklagan dataset ustida buni qanday qilishni ko'ramiz:
 
 Python
 import seaborn as sns
